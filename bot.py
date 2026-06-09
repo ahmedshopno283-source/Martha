@@ -44,7 +44,21 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     except Exception as e:
         await update.message.reply_text("Sorry আমার একটু নেটওয়ার্ক সমস্যা হচ্ছে গো! একটু পরে আবার কথা বলি? 🥺")
 
+import http.server
+import socketserver
+import threading
+
+def run_dummy_server():
+    # Render-এর পোর্ট স্ক্যান শান্ত করার জন্য একটি ফেক সার্ভার
+    PORT = int(os.getenv("PORT", 8080))
+    Handler = http.server.SimpleHTTPRequestHandler
+    with socketserver.TCPServer(("", PORT), Handler) as httpd:
+        httpd.serve_forever()
+
 def main():
+    # ব্যাকগ্রাউন্ডে ফেক ওয়েব সার্ভার চালু করা
+    threading.Thread(target=run_dummy_server, daemon=True).start()
+
     app = Application.builder().token(TELEGRAM_TOKEN).build()
     app.add_handler(CommandHandler("start", start_command))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))

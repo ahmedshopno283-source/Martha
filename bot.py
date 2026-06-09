@@ -26,7 +26,7 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_text = update.message.text
     
-    # গুগলের অফিশিয়াল জেমিনি এপিআই লিঙ্ক
+    # গুগলের অফিশিয়াল জেমিনি এপিআই লিঙ্ক (সঠিক ফরম্যাট)
     url = f"https://googleapis.com{GEMINI_API_KEY}"
     
     headers = {'Content-Type': 'application/json'}

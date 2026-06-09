@@ -4,7 +4,7 @@ from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 
 # 🔐 আপনার টোকেন এবং নতুন এআই কী (API Key) সঠিকভাবে বসান
-TELEGRAM_TOKEN = '8996419022:AAHBvhfGCIf5TE9Q7cK-dspfwHNsZaiA9CY'
+TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
 GEMINI_API_KEY = 'AQ-Ab8RN6IrtvpYGP1i9D35hb8rFMp3-jKCPNz_SZv_CfMGgweJRA'
 
 # 💖 মারথার ব্যক্তিত্ব ও ভাষার নির্দেশনা (System Instruction)
